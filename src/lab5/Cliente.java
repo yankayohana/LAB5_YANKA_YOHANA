@@ -1,11 +1,40 @@
 package lab5;
 
-public class Cliente {
+/**
+ * 
+ * @author yanka yohana, laboratório de programaçao 2;
+ *
+ */
 
+public class Cliente implements Comparable<Cliente> {
+
+	/**
+	 * String que representa o cpf do cliente;
+	 */
 	String cpf;
+	
+	/**
+	 * String que representa o nome do cliente;
+	 */
 	String nome;
+	
+	/**
+	 * String que representa o email do cliente;
+	 */
 	String email;
+	
+	/**
+	 * String que representa a localização do cliente;
+	 */
 	String localizacao;
+	
+	/**
+	 * Constrói um cliente a partir do cpf, nome, email e localização;
+	 * @param cpf uma string que representa o cpf do cliente;
+	 * @param nome uma string que representa o nome de um cliente;
+	 * @param email uma string que representa o email de um cliente;
+	 * @param localizacao uma string que representa a localização do cliente;
+	 */
 	
 	public Cliente(String cpf, String nome, String email, String localizacao) {
 		this.cpf = cpf;
@@ -30,6 +59,10 @@ public class Cliente {
 		return localizacao;
 	}
 	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -38,6 +71,33 @@ public class Cliente {
 		this.localizacao = localizacao;
 	}
 
+	/**
+	 * Compara o nome deste cliente com outro alfabeticamente; 
+	 */
+	public int compareTo(Cliente other) { 
+		return this.nome.compareTo(other.nome); 
+	}
+	
+	/**
+	 * Edita os atributos do cliente;
+	 * @param parametro
+	 * @param valor
+	 */
+	public void editarParametro(String parametro, String valor) {
+		
+		switch(parametro) {
+		case "nome": 
+			this.setNome(valor);
+			break;
+		case "email": 
+			this.setEmail(valor);
+			break;
+		case "localizacao":
+			this.setLocalizacao(valor);
+			break;
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,6 +141,9 @@ public class Cliente {
 		return true;
 	}
 	
+	/**
+	 * Retorna uma string que representa um cliente.
+	 */
 	public String toString() {
 		return this.nome + " - " + this.localizacao + " - " + this.email;
 	}
