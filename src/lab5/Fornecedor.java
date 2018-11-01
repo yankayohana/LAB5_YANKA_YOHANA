@@ -5,8 +5,6 @@ package lab5;
  * @author yanka yohana, laboratório de programação 2;
  */
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class Fornecedor implements Comparable<Fornecedor>  {
 	

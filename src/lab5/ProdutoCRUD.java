@@ -57,5 +57,13 @@ public class ProdutoCRUD {
 		this.produtos.remove(produto);
 	}
 	
+	public List<String> getNomesProdutos(){
+		List<String> nomesProdutos = new ArrayList<>();
+		for(Produto produto : produtos) {
+			nomesProdutos.add(produto.getNome()); 
+		}
+		return nomesProdutos;
+	}
+	
 	
 }
