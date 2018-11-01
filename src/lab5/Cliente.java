@@ -1,7 +1,7 @@
 package lab5;
 
 /**
- * 
+ * Essa classe representa um cliente.
  * @author yanka yohana, laboratório de programaçao 2;
  *
  */

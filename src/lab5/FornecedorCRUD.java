@@ -1,6 +1,9 @@
 package lab5;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FornecedorCRUD {
@@ -16,7 +19,21 @@ public class FornecedorCRUD {
 		fornecedores.put(nome, fornecedor);
 	}
 	
-	public String 
+	public String readFornecedor(String nome) {
+		return fornecedores.get(nome).toString();
+	}
+	
+	public List<Fornecedor> getfornecedoresOrdenados() {
+		List<Fornecedor> fornecedoresOrdenados = new ArrayList<>(this.fornecedores.values());
+		Collections.sort(fornecedoresOrdenados);
+		return fornecedoresOrdenados;
+	}
+
+	public void editaCliente(String nome, String parametro, String valor) {
+		Fornecedor fornecedor = this.fornecedores.get(nome);
+		fornecedor.editarParametro(parametro, valor);
+	}
+
 	
 	
 	

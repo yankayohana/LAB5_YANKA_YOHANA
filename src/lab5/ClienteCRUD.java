@@ -9,7 +9,6 @@ import java.util.Map;
 public class ClienteCRUD {
 
 	private Map<String, Cliente> clientes;
-//	private ArrayList<Cliente> clientesOrdenados;
 
 	public ClienteCRUD() {
 		this.clientes = new HashMap<>();
@@ -48,31 +47,6 @@ public class ClienteCRUD {
 
 	public void removeCliente(String cpf) {
 		clientes.remove(cpf);
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((clientes == null) ? 0 : clientes.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ClienteCRUD other = (ClienteCRUD) obj;
-		if (clientes == null) {
-			if (other.clientes != null)
-				return false;
-		} else if (!clientes.equals(other.clientes))
-			return false;
-		return true;
 	}
 
 }

@@ -1,20 +1,43 @@
 package lab5;
 
+/**
+ * Essa classe representa um fornecedor.
+ * @author yanka yohana, laboratório de programação 2;
+ */
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class Fornecedor {
+public class Fornecedor implements Comparable<Fornecedor>  {
+	
 
+	private ProdutoCRUD produtos;
+	/**
+	 * String que representa o nome do fornecedor;
+	 */
 	String nome;
+	
+	/**
+	 * String que representa o email do fornecedor;
+	 */
 	String email;
+	
+	/**
+	 * String que representa o telefone do fornecedor;
+	 */
 	String telefone;
-	Set<Produto> produtos;
-
+	
+	/**
+	 * Constrói um fornecedor a partir de nome, email e telefone.
+	 * @param nome string que representa o nome do fornecedor.
+	 * @param email string que representa o email do fornecedor.
+	 * @param telefone string que representa o telefone do fornecedor.
+	 */
 	public Fornecedor(String nome, String email, String telefone) {
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
-		this.produtos = new HashSet<>();
+		this.produtos = new ProdutoCRUD();
 
 	}
 
@@ -37,6 +60,36 @@ public class Fornecedor {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	
+	/**
+	 * Compara o nome deste forncedor com outro alfabeticamente; 
+	 */
+	public int compareTo(Fornecedor other) { 
+		return this.nome.compareTo(other.nome); 
+	}
+	
+	/**
+	 * Edita os atributos do fornecedor;
+	 * @param parametro
+	 * @param valor
+	 */
+	public void editarParametro(String parametro, String valor) {
+		
+		switch(parametro) {
+		case "telefone": 
+			this.setTelefone(valor);
+			break;
+		case "email": 
+			this.setEmail(valor);
+			break;
+		}
+	}
+	
+	public void adicionaProduto(String nome, double preco, String descricao) {
+		this.produtos.createProduto(nome, preco, descricao);
+	}
+	
+	
 
 	@Override
 	public int hashCode() {
@@ -75,6 +128,9 @@ public class Fornecedor {
 		return true;
 	}
 
+	/**
+	 * Retorna uma string que representa um fornecedor.
+	 */
 	public String toString() {
 		return this.nome + " - " + this.email + " - " + this.telefone;
 	}

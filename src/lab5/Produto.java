@@ -1,35 +1,44 @@
 package lab5;
 
-public class Produto {
-	
+/**
+ * Essa classe representa um produto.
+ * 
+ * @author yanka yohana,
+ *
+ */
+public class Produto implements Comparable<Produto> {
+
 	String nome;
 	double preco;
 	String descricao;
-	
+
 	public Produto(String nome, double preco, String descricao) {
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public double getPreco() {
 		return preco;
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+
+	/**
+	 * Compara o nome deste forncedor com outro alfabeticamente;
+	 */
+	public int compareTo(Produto other) {
+		return this.nome.compareTo(other.nome);
 	}
 
 	@Override
@@ -67,9 +76,9 @@ public class Produto {
 			return false;
 		return true;
 	}
-	
+
 	public String toString() {
-		return this.nome + " - " + this.descricao + " - " + "R$" +  this.preco;
+		return this.nome + " - " + this.descricao + " - " + "R$" + this.preco;
 	}
 
 }
