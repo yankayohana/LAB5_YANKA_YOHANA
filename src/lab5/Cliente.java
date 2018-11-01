@@ -34,9 +34,16 @@ public class Cliente implements Comparable<Cliente> {
 	 * @param nome uma string que representa o nome de um cliente;
 	 * @param email uma string que representa o email de um cliente;
 	 * @param localizacao uma string que representa a localização do cliente;
+	 * @throws Exception 
 	 */
 	
-	public Cliente(String cpf, String nome, String email, String localizacao) {
+	public Cliente(String cpf, String nome, String email, String localizacao) throws Exception {
+		
+		Validator.verificaString(cpf, "cpf invalido.");
+		Validator.verificaString(nome, "nome nao pode ser vazio ou nulo.");
+		Validator.verificaString(email, "nome nao pode ser vazio ou nulo");
+		
+		
 		this.cpf = cpf;
 		this.nome = nome;
 		this.email = email;

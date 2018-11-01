@@ -12,8 +12,23 @@ public class Facade {
 		this.fornecedor = new FornecedorCRUD();
 	}
 
-	public void adicionaCliente(String cpf, String nome, String email, String localizacao) {
-		this.cliente.createCliente(cpf, nome, email, localizacao);
+	public void adicionaCliente(String cpf, String nome, String email, String localizacao) throws Exception {
+		try {
+			cliente.createCliente(cpf, nome, email, localizacao);
+		}catch (Exception e) {
+			throw new Exception ("Erro no cadastro do cliente: " + e.getMessage());
+			
+		}
+		try {
+			cliente.createCliente(cpf, nome, email, localizacao);
+		}catch (Exception e) {
+			throw new Exception ("Erro no cadastro do cliente: " + e.getMessage());
+		}
+		try {
+			cliente.createCliente(cpf, nome, email, localizacao);
+		}catch(Exception e) {
+			throw new Exception("Erro no cadastro do cliente:" + e.getMessage());
+		}
 	}
 
 	public void editaCliente(String cpf, String parametro, String valor) {
