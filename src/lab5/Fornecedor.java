@@ -13,17 +13,17 @@ public class Fornecedor implements Comparable<Fornecedor>  {
 	/**
 	 * String que representa o nome do fornecedor;
 	 */
-	String nome;
+	private String nome;
 	
 	/**
 	 * String que representa o email do fornecedor;
 	 */
-	String email;
+	private String email;
 	
 	/**
 	 * String que representa o telefone do fornecedor;
 	 */
-	String telefone;
+	private String telefone;
 	
 	/**
 	 * Constrói um fornecedor a partir de nome, email e telefone.
@@ -87,6 +87,17 @@ public class Fornecedor implements Comparable<Fornecedor>  {
 		this.produtos.createProduto(nome, preco, descricao);
 	}
 	
+	public String exibeProdutos() {
+		return this.produtos.exibeProdutos();
+	}
+	
+	public void editaPrecoProdutos(String nome, double preco) throws Exception {
+		this.produtos.editaPreco(nome, preco);
+	}
+	
+	public void removeProduto(String nome) throws Exception {
+		this.produtos.removeProduto(nome);
+	}
 	
 
 	@Override
@@ -131,6 +142,13 @@ public class Fornecedor implements Comparable<Fornecedor>  {
 	 */
 	public String toString() {
 		return this.nome + " - " + this.email + " - " + this.telefone;
+	}
+	
+	public String listaProdutos() {
+		String retorno = "";
+		for (String toStringProduto : this.produtos.getToStringProdutos()) {
+			retorno += this.nome + " - " + toStringProduto + "|";
+		} return retorno;
 	}
 
 }

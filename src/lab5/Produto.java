@@ -8,9 +8,9 @@ package lab5;
  */
 public class Produto implements Comparable<Produto> {
 
-	String nome;
-	double preco;
-	String descricao;
+	private String nome;
+	private double preco;
+	private String descricao;
 
 	public Produto(String nome, double preco, String descricao) {
 		this.nome = nome;

@@ -16,6 +16,15 @@ public class ClienteCRUD {
 	}
 
 	public void createCliente(String cpf, String nome, String email, String localizacao) {
+		if (nome.equals("")) {
+			throw new NullPointerException("Erro no cadastro do cliente: nome nao pode ser vazio ou nulo.");
+		}
+		if (email.equals("")) {
+			throw new NullPointerException("Erro no cadastro do cliente: email nao pode ser vazio ou nulo.");
+		}
+		if (localizacao.equals("")) {
+			throw new NullPointerException("Erro no cadastro do cliente: localizacao nao pode ser vazia ou nula.");
+		}
 		Cliente cliente = new Cliente(cpf, nome, email, localizacao);
 		clientes.put(cpf, cliente);
 
@@ -47,6 +56,11 @@ public class ClienteCRUD {
 
 	public void removeCliente(String cpf) {
 		clientes.remove(cpf);
+	}
+
+	public String exibeCliente(String cpf) {
+		return clientes.get(cpf).toString();
+
 	}
 
 }

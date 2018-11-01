@@ -11,22 +11,22 @@ public class Cliente implements Comparable<Cliente> {
 	/**
 	 * String que representa o cpf do cliente;
 	 */
-	String cpf;
+	private String cpf;
 	
 	/**
 	 * String que representa o nome do cliente;
 	 */
-	String nome;
+	private String nome;
 	
 	/**
 	 * String que representa o email do cliente;
 	 */
-	String email;
+	private String email;
 	
 	/**
 	 * String que representa a localização do cliente;
 	 */
-	String localizacao;
+	private String localizacao;
 	
 	/**
 	 * Constrói um cliente a partir do cpf, nome, email e localização;

@@ -29,13 +29,25 @@ public class FornecedorCRUD {
 		return fornecedoresOrdenados;
 	}
 
-	public void editaCliente(String nome, String parametro, String valor) {
+	public void editaFornecedor(String nome, String parametro, String valor) {
 		Fornecedor fornecedor = this.fornecedores.get(nome);
 		fornecedor.editarParametro(parametro, valor);
 	}
 
+	public String exibeFornecedores() {
+		String retorno = "";
+		for (Fornecedor fornecedor : this.getfornecedoresOrdenados()) {
+			retorno += fornecedor.toString() + "|";
+		}
+		return retorno;
+	}
 	
+	public void removeFornecedor(String nome) {
+		fornecedores.remove(nome);
+	}
 	
-	
+	public String exibeFornecedor(String nome) {
+		return fornecedores.get(nome).toString();
+	}
 
 }

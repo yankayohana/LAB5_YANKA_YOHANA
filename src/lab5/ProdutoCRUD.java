@@ -57,12 +57,12 @@ public class ProdutoCRUD {
 		this.produtos.remove(produto);
 	}
 	
-	public List<String> getNomesProdutos(){
-		List<String> nomesProdutos = new ArrayList<>();
+	public List<String> getToStringProdutos(){
+		List<String> toStringProdutos = new ArrayList<>();
 		for(Produto produto : produtos) {
-			nomesProdutos.add(produto.getNome()); 
+			toStringProdutos.add(produto.toString()); 
 		}
-		return nomesProdutos;
+		return toStringProdutos;
 	}
 	
 	
