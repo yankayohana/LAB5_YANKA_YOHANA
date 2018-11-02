@@ -59,7 +59,7 @@ public class FornecedorCRUD {
 
 	public void removeFornecedor(String nome) throws Exception {
 		if (nome.equals("")) {
-			throw new Exception("Erro na remocao do fornecedor: nome do fornecedor nao pode ser vazio.");
+			throw new Exception("nome do fornecedor nao pode ser vazio.");
 		}else {
 			fornecedores.remove(nome);
 			
@@ -70,7 +70,7 @@ public class FornecedorCRUD {
 		if(fornecedores.containsKey(nome)) {
 			return fornecedores.get(nome).toString();
 		}else {
-			throw new Exception("Erro na exibicao do fornecedor: fornecedor nao existe.");
+			throw new Exception("fornecedor nao existe.");
 		}
 		
 	}

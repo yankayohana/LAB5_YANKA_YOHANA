@@ -52,12 +52,12 @@ public class Facade {
 	}
 
 	public void editaFornecedor(String nome, String parametro, String valor) throws Exception {
-		try { 
+		try {
 			this.fornecedor.editaFornecedor(nome, parametro, valor);
 		} catch (Exception e) {
 			throw new Exception("Erro na edicao do fornecedor: " + e.getMessage());
 		}
-		
+
 	}
 
 	public String exibeFornecedores() {
@@ -65,11 +65,19 @@ public class Facade {
 	}
 
 	public void removeFornecedor(String nome) throws Exception {
-		this.fornecedor.removeFornecedor(nome);
+		try {
+			this.fornecedor.removeFornecedor(nome);
+		} catch (Exception e) {
+			throw new Exception("Erro na remocao do fornecedor: " + e.getMessage());
+		}
 	}
 
 	public String exibeFornecedor(String nome) throws Exception {
-		return this.fornecedor.exibeFornecedor(nome);
+		try {
+			return this.fornecedor.exibeFornecedor(nome);
+		} catch (Exception e) {
+			throw new Exception("Erro na exibicao do fornecedor: " + e.getMessage());
+		}
 	}
 
 	public static void main(String[] args) {
