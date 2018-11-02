@@ -16,9 +16,12 @@ public class ClienteCRUD {
 	}
 
 	public void createCliente(String cpf, String nome, String email, String localizacao) throws Exception {
-		Cliente cliente = new Cliente(cpf, nome, email, localizacao);
-		clientes.put(cpf, cliente);
-		
+		if (clientes.containsKey(cpf)) {
+			throw new Exception("cliente ja existe.");
+		} else {
+			Cliente cliente = new Cliente(cpf, nome, email, localizacao);
+			clientes.put(cpf, cliente);
+		}
 
 	}
 
@@ -28,8 +31,14 @@ public class ClienteCRUD {
 
 	public String exibeClientes() {
 		String retorno = "";
+		int contador = 0;
 		for (Cliente cliente : this.getClientesOrdenados()) {
-			retorno += cliente.toString() + "|";
+			contador += 1;
+			if (contador < this.getClientesOrdenados().size()) {
+				retorno += cliente.toString() + " | ";
+			}if (contador == this.getClientesOrdenados().size()){
+				retorno += cliente.toString();
+			}
 		}
 		return retorno;
 	}
@@ -40,18 +49,27 @@ public class ClienteCRUD {
 		return clientesOrdenados;
 	}
 
-	public void editaCliente(String cpf, String parametro, String valor) {
-		Cliente cliente = this.clientes.get(cpf);
-		cliente.editarParametro(parametro, valor);
-
+	public void editaCliente(String cpf, String parametro, String valor) throws Exception {
+		if (clientes.containsKey(cpf)) {
+			Cliente cliente = this.clientes.get(cpf);
+			cliente.editarParametro(parametro, valor);
+		}else {
+			throw new Exception("cliente nao existe.");
+		}
+		
 	}
 
 	public void removeCliente(String cpf) {
 		clientes.remove(cpf);
 	}
 
-	public String exibeCliente(String cpf) {
-		return clientes.get(cpf).toString();
+	public String exibeCliente(String cpf) throws Exception {
+		if (clientes.containsKey(cpf)) {
+			return clientes.get(cpf).toString();
+
+		}else {
+			throw new Exception("Erro na exibicao do cliente: cliente nao existe.");
+		}
 
 	}
 

@@ -11,7 +11,7 @@ public class Fornecedor implements Comparable<Fornecedor>  {
 
 	private ProdutoCRUD produtos;
 	/**
-	 * String que representa o nome do fornecedor;
+	 * String que representa o nome do fornecedor; 
 	 */
 	private String nome;
 	
@@ -30,8 +30,14 @@ public class Fornecedor implements Comparable<Fornecedor>  {
 	 * @param nome string que representa o nome do fornecedor.
 	 * @param email string que representa o email do fornecedor.
 	 * @param telefone string que representa o telefone do fornecedor.
+	 * @throws Exception 
 	 */
-	public Fornecedor(String nome, String email, String telefone) {
+	public Fornecedor(String nome, String email, String telefone) throws Exception {
+		
+		Validator.verificaString(nome, "nome nao pode ser vazio ou nulo.");
+		Validator.verificaString(email, "email nao pode ser vazio ou nulo.");
+		Validator.verificaString(telefone, "telefone nao pode ser vazio ou nulo");
+		
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
@@ -70,8 +76,12 @@ public class Fornecedor implements Comparable<Fornecedor>  {
 	 * Edita os atributos do fornecedor;
 	 * @param parametro
 	 * @param valor
+	 * @throws Exception 
 	 */
-	public void editarParametro(String parametro, String valor) {
+	public void editarParametro(String parametro, String valor) throws Exception {
+		
+		Validator.verificaString(parametro, "atributo nao pode ser vazio ou nulo.");
+		Validator.verificaString(valor, "novo valor nao pode ser vazio ou nulo.");
 		
 		switch(parametro) {
 		case "telefone": 
@@ -80,6 +90,10 @@ public class Fornecedor implements Comparable<Fornecedor>  {
 		case "email": 
 			this.setEmail(valor);
 			break;
+		case "nome":
+			throw new Exception("nome nao pode ser editado.");
+		default:
+			throw new Exception("atributo nao existe.");
 		}
 	}
 	
@@ -91,7 +105,7 @@ public class Fornecedor implements Comparable<Fornecedor>  {
 		return this.produtos.exibeProdutos();
 	}
 	
-	public void editaPrecoProdutos(String nome, double preco) throws Exception {
+	public void editaPrecoProdutos(String nome, double preco) throws Exception  {
 		this.produtos.editaPreco(nome, preco);
 	}
 	

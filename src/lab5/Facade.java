@@ -6,70 +6,74 @@ public class Facade {
 
 	private ClienteCRUD cliente;
 	private FornecedorCRUD fornecedor;
-	
+
 	public Facade() {
 		this.cliente = new ClienteCRUD();
 		this.fornecedor = new FornecedorCRUD();
 	}
 
-	public void adicionaCliente(String cpf, String nome, String email, String localizacao) throws Exception {
+	public String adicionaCliente(String cpf, String nome, String email, String localizacao) throws Exception {
 		try {
 			cliente.createCliente(cpf, nome, email, localizacao);
-		}catch (Exception e) {
-			throw new Exception ("Erro no cadastro do cliente: " + e.getMessage());
-			
+		} catch (Exception e) {
+			throw new Exception("Erro no cadastro do cliente: " + e.getMessage());
 		}
-		try {
-			cliente.createCliente(cpf, nome, email, localizacao);
-		}catch (Exception e) {
-			throw new Exception ("Erro no cadastro do cliente: " + e.getMessage());
-		}
-		try {
-			cliente.createCliente(cpf, nome, email, localizacao);
-		}catch(Exception e) {
-			throw new Exception("Erro no cadastro do cliente:" + e.getMessage());
-		}
+		return cpf;
 	}
 
-	public void editaCliente(String cpf, String parametro, String valor) {
-		this.cliente.editaCliente(cpf, parametro, valor);
+	public void editaCliente(String cpf, String parametro, String valor) throws Exception {
+		try {
+			this.cliente.editaCliente(cpf, parametro, valor);
+		} catch (Exception e) {
+			throw new Exception("Erro na edicao do cliente: " + e.getMessage());
+		}
 	}
 
 	public String exibeClientes() {
 		return this.cliente.exibeClientes();
 
 	}
-	
-	public String exibeCliente(String cpf) {
+
+	public String exibeCliente(String cpf) throws Exception {
 		return this.cliente.exibeCliente(cpf);
 	}
-	
+
 	public void removeCliente(String cpf) {
 		this.cliente.removeCliente(cpf);
 	}
-	
-	public void cadastraFornecedor(String nome, String email, String telefone) {
-		this.fornecedor.createFornecedor(nome, email, telefone);
+
+	public String adicionaFornecedor(String nome, String email, String telefone) throws Exception {
+		try {
+			this.fornecedor.createFornecedor(nome, email, telefone);
+		} catch (Exception e) {
+			throw new Exception("Erro no cadastro do fornecedor: " + e.getMessage());
+		}
+		return nome;
 	}
-	
-	public void editaFornecedor(String nome, String parametro, String valor) {
-		this.fornecedor.editaFornecedor(nome, parametro, valor);
+
+	public void editaFornecedor(String nome, String parametro, String valor) throws Exception {
+		try { 
+			this.fornecedor.editaFornecedor(nome, parametro, valor);
+		} catch (Exception e) {
+			throw new Exception("Erro na edicao do fornecedor: " + e.getMessage());
+		}
+		
 	}
-	
+
 	public String exibeFornecedores() {
 		return this.fornecedor.exibeFornecedores();
 	}
-	
-	public void removeFornecedor(String nome) {
+
+	public void removeFornecedor(String nome) throws Exception {
 		this.fornecedor.removeFornecedor(nome);
 	}
-	
-	public String exibeFornecedor(String nome) {
+
+	public String exibeFornecedor(String nome) throws Exception {
 		return this.fornecedor.exibeFornecedor(nome);
 	}
-	
+
 	public static void main(String[] args) {
-		args = new String[] {"lab5.Facade", "TesteDeAceitacao/use_case_1.txt"};
+		args = new String[] { "lab5.Facade", "TesteDeAceitacao/use_case_1.txt", "TesteDeAceitacao/use_case_2.txt" };
 		EasyAccept.main(args);
 	}
 

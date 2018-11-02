@@ -39,10 +39,10 @@ public class Cliente implements Comparable<Cliente> {
 	
 	public Cliente(String cpf, String nome, String email, String localizacao) throws Exception {
 		
-		Validator.verificaString(cpf, "cpf invalido.");
+		Validator.verificaCPF(cpf, "cpf invalido.");
 		Validator.verificaString(nome, "nome nao pode ser vazio ou nulo.");
-		Validator.verificaString(email, "nome nao pode ser vazio ou nulo");
-		
+		Validator.verificaString(email, "email nao pode ser vazio ou nulo.");
+		Validator.verificaString(localizacao, "localizacao nao pode ser vazia ou nula.");
 		
 		this.cpf = cpf;
 		this.nome = nome;
@@ -89,8 +89,13 @@ public class Cliente implements Comparable<Cliente> {
 	 * Edita os atributos do cliente;
 	 * @param parametro
 	 * @param valor
+	 * @throws Exception 
 	 */
-	public void editarParametro(String parametro, String valor) {
+	public void editarParametro(String parametro, String valor) throws Exception {
+		
+		Validator.verificaString(parametro, "atributo nao pode ser vazio ou nulo.");
+		Validator.verificaString(valor, "novo valor nao pode ser vazio ou nulo.");
+		
 		
 		switch(parametro) {
 		case "nome": 
@@ -102,6 +107,7 @@ public class Cliente implements Comparable<Cliente> {
 		case "localizacao":
 			this.setLocalizacao(valor);
 			break;
+		default: throw new Exception("atributo nao existe.");
 		}
 	}
 	
