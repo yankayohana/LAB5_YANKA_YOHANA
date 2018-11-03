@@ -97,16 +97,38 @@ public class Fornecedor implements Comparable<Fornecedor>  {
 		}
 	}
 	
-	public void adicionaProduto(String nome, double preco, String descricao) {
+	/**
+	 * adiciona um produto.
+	 * @param nome string que representa o nome de um produto. 
+	 * @param descricao string que representa a descrição. 
+	 * @param preco double que representa o preço do produto.
+	 * @throws Exception
+	 */
+	public void adicionaProduto(String nome, String descricao, double preco) throws Exception {
 		this.produtos.createProduto(nome, preco, descricao);
 	}
 	
+	/**
+	 * exibe um produto
+	 * @return retorna a string de um produto.
+	 */
 	public String exibeProdutos() {
 		return this.produtos.exibeProdutos();
 	}
 	
+	/**
+	 * edita o preco de um produto
+	 * @param nome string que representa o nome de um produto
+	 * @param preco double que representa o preco de um produto
+	 * @throws Exception
+	 */
 	public void editaPrecoProdutos(String nome, double preco) throws Exception  {
 		this.produtos.editaPreco(nome, preco);
+	}
+	
+	
+	public String exibeProduto(String nome, String descricao) throws Exception {
+		return this.produtos.exibeProduto(nome);
 	}
 	
 	public void removeProduto(String nome) throws Exception {

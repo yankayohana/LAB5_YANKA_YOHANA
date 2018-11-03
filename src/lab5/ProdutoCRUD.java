@@ -14,9 +14,12 @@ public class ProdutoCRUD {
 		this.produtos = new HashSet<>();
 	}
 	
-	public void createProduto(String nome, double preco, String descricao) {
+	public void createProduto(String nome, double preco, String descricao) throws Exception {
 		Produto produto = new Produto(nome, preco, descricao);
-		produtos.add(produto);
+		if(!this.produtos.add(produto)) {
+			throw new Exception("produto ja existe.");
+		}
+		
 	}
 	
 	public Produto procuraProduto(String nome) throws Exception {
@@ -39,6 +42,19 @@ public class ProdutoCRUD {
 			retorno += produto;
 		}
 		return retorno;
+	}
+	
+	public Produto getProduto(String nome) throws Exception {
+		for(Produto produto : produtos) {
+			if (produto.getNome().equals(nome)) {
+				return produto;
+			}
+		}
+		throw new Exception("produto nao existe.");
+	}
+	
+	public String exibeProduto(String nome) throws Exception {
+		return this.getProduto(nome).toString();
 	}
 	
 	private List<Produto> getProdutosOrdenados() {

@@ -12,6 +12,12 @@ public class Facade {
 		this.fornecedor = new FornecedorCRUD();
 	}
 
+	public static void main(String[] args) {
+		args = new String[] { "lab5.Facade", "TesteDeAceitacao/use_case_1.txt", "TesteDeAceitacao/use_case_2.txt",
+				"TesteDeAceitacao/use_case_3.txt" };
+		EasyAccept.main(args);
+	}
+
 	public String adicionaCliente(String cpf, String nome, String email, String localizacao) throws Exception {
 		try {
 			cliente.createCliente(cpf, nome, email, localizacao);
@@ -79,10 +85,22 @@ public class Facade {
 			throw new Exception("Erro na exibicao do fornecedor: " + e.getMessage());
 		}
 	}
-
-	public static void main(String[] args) {
-		args = new String[] { "lab5.Facade", "TesteDeAceitacao/use_case_1.txt", "TesteDeAceitacao/use_case_2.txt" };
-		EasyAccept.main(args);
+	
+	public void adicionaProduto(String nome, String nomeProduto, String descricao, double preco) throws Exception {
+		try {
+			this.fornecedor.cadastraProduto(nome, nomeProduto, descricao, preco);
+		 } catch (Exception e) {
+			throw new Exception("Erro no cadastro de produto: " + e.getMessage());
+		}
 	}
-
+	
+	public String exibeProduto(String nomeProduto, String descricao, String nome) throws Exception {
+		try {
+			return this.fornecedor.exibeProduto(nomeProduto, descricao, nome);
+			
+		}catch (Exception e) {
+			throw new Exception("Erro na exibicao do produto: " + e.getMessage());
+		}
+	}
+	
 }

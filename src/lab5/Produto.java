@@ -6,16 +6,43 @@ package lab5;
  * @author yanka yohana,
  *
  */
+
+import java.text.DecimalFormat;
+
 public class Produto implements Comparable<Produto> {
-
+	
+	/**
+	 * String que representa o nome de um produto
+	 */
 	private String nome;
+	
+	/**
+	 * double que representa que representa o preço de um produto.
+	 */
 	private double preco;
+	
+	/**
+	 * String que a descrição de um produto.
+	 */
 	private String descricao;
-
-	public Produto(String nome, double preco, String descricao) {
+	
+	/**
+	 * Constrói um produto.
+	 * @param nome uma string que representa o  
+	 * @param preco
+	 * @param descricao
+	 * @throws Exception
+	 */
+	public Produto(String nome, double preco, String descricao) throws Exception {
+		
+		Validator.verificaString(nome, "nome nao pode ser vazio ou nulo.");
+		Validator.verificaDouble(preco, "preco invalido.");
+		Validator.verificaString(descricao, "descricao nao pode ser vazia ou nula.");
+		
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
+		
 	}
 
 	public String getNome() {
@@ -41,15 +68,13 @@ public class Produto implements Comparable<Produto> {
 		return this.nome.compareTo(other.nome);
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(preco);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -72,13 +97,15 @@ public class Produto implements Comparable<Produto> {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (Double.doubleToLongBits(preco) != Double.doubleToLongBits(other.preco))
-			return false;
 		return true;
 	}
 
+	/**
+	 * Retorna uma string que representa um produto.
+	 */
 	public String toString() {
-		return this.nome + " - " + this.descricao + " - " + "R$" + this.preco;
+		DecimalFormat df = new DecimalFormat("#.00");
+		return this.nome + " - " + this.descricao + " - " + "R$" + df.format(this.preco);
 	}
 
 }
