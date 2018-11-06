@@ -171,9 +171,20 @@ public class FornecedorCRUD {
 		return retorno;
 	}
 
-	public void editaProduto(String nome, String descricao, double precoNovo, String nomeFornecedor) throws Exception {
-		this.getFornecedor(nome).editaPrecoProdutos(nome,descricao, precoNovo, nomeFornecedor);
+	public void editaProduto(String nome, String descricao, String nomeFornecedor, double precoNovo) throws Exception {
+		Validator.verificaString(nome, "nome nao pode ser vazio ou nulo.");
+		Validator.verificaString(nomeFornecedor, "fornecedor nao pode ser vazio ou nulo.");
+		Validator.verificaDouble(precoNovo, "preco invalido.");
+		Validator.verificaString(descricao, "descricao nao pode ser vazia ou nula.");
+		this.getFornecedor(nomeFornecedor).editaPrecoProdutos(nome, descricao, nomeFornecedor, precoNovo);
 
+	}
+	
+	public void removeProduto(String nome, String descricao, String nomeFornecedor) throws Exception {
+		Validator.verificaString(nome, "nome nao pode ser vazio ou nulo.");
+		Validator.verificaString(descricao, "descricao nao pode ser vazia ou nula.");
+		Validator.verificaString(nomeFornecedor, "fornecedor nao pode ser vazio ou nulo.");
+		this.getFornecedor(nomeFornecedor).removeProduto(nome, descricao);
 	}
 
 }

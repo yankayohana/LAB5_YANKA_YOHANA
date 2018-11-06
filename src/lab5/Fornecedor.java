@@ -128,8 +128,8 @@ public class Fornecedor implements Comparable<Fornecedor> {
 	 * @param preco double que representa o preco de um produto
 	 * @throws Exception
 	 */
-	public void editaPrecoProdutos(String nome, String descricao, double preco, String nomeFornecedor) throws Exception {
-		this.produtos.editaPreco(nome, descricao, preco, nomeFornecedor);
+	public void editaPrecoProdutos(String nome, String descricao, String nomeFornecedor,  double precoNovo) throws Exception {
+		this.produtos.editaPreco(nome, descricao, nomeFornecedor, precoNovo);
 	}
 
 	public String exibeProduto(String nome, String descricao) throws Exception {

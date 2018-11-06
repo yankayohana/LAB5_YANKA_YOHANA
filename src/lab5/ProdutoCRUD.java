@@ -28,7 +28,7 @@ public class ProdutoCRUD {
 				return produto;
 			}
 		}
-		throw new Exception("Produto não encontrado."); 
+		throw new Exception("produto nao existe."); 
 	}
 	
 	public String readProduto(String nome, String descricao) throws Exception {
@@ -63,9 +63,9 @@ public class ProdutoCRUD {
 		return produtosOrdenados;
 	}
 	
-	public void editaPreco(String nome,String descricao, double preco, String nomeFornecedor) throws Exception {
+	public void editaPreco(String nome,String descricao, String nomeFornecedor,  double precoNovo) throws Exception {
 		Produto produto = this.procuraProduto(nome, descricao);
-		produto.setPreco(preco);
+		produto.setPreco(precoNovo);
 	}
 	
 	public void removeProduto(String nome, String descricao) throws Exception {

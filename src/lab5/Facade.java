@@ -119,11 +119,19 @@ public class Facade {
 		}
 	}
 	
-	public void editaProduto(String nome,String descricao, double precoNovo, String nomeFornecedor) throws Exception {
+	public void editaProduto(String nome,String descricao, String nomeFornecedor,  double precoNovo) throws Exception {
 		try {
-			this.fornecedor.editaProduto(nome, descricao, precoNovo, nomeFornecedor);
+			this.fornecedor.editaProduto(nome, descricao, nomeFornecedor, precoNovo);
 		}catch (Exception e) {
-			throw new Exception("Erro na edicao do produto: " + e.getMessage());
+			throw new Exception("Erro na edicao de produto: " + e.getMessage());
+		}
+	}
+	
+	public void removeProduto(String nome, String descricao, String nomeFornecedor) throws Exception {
+		try {
+			this.fornecedor.removeProduto(nome, descricao, nomeFornecedor);
+		}catch (Exception e) {
+			throw new Exception("Erro na remocao de produto: " + e.getMessage());
 		}
 	}
 	
