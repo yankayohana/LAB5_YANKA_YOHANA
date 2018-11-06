@@ -171,8 +171,8 @@ public class FornecedorCRUD {
 		return retorno;
 	}
 
-	public void editaProduto(String nome, String descricao, double precoNovo) throws Exception {
-		this.getFornecedor(nome).editaPrecoProdutos(nome,descricao, precoNovo);
+	public void editaProduto(String nome, String descricao, double precoNovo, String nomeFornecedor) throws Exception {
+		this.getFornecedor(nome).editaPrecoProdutos(nome,descricao, precoNovo, nomeFornecedor);
 
 	}
 

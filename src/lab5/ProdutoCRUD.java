@@ -63,7 +63,7 @@ public class ProdutoCRUD {
 		return produtosOrdenados;
 	}
 	
-	public void editaPreco(String nome,String descricao, double preco) throws Exception {
+	public void editaPreco(String nome,String descricao, double preco, String nomeFornecedor) throws Exception {
 		Produto produto = this.procuraProduto(nome, descricao);
 		produto.setPreco(preco);
 	}
