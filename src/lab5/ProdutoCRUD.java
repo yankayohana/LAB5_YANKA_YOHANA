@@ -22,17 +22,17 @@ public class ProdutoCRUD {
 		
 	}
 	
-	public Produto procuraProduto(String nome) throws Exception {
+	public Produto procuraProduto(String nome, String descricao) throws Exception {
 		for(Produto produto : produtos) {
-			if(produto.getNome().equals(nome)) {
+			if(produto.getNome().equals(nome) && produto.getDescricao().equals(descricao)) {
 				return produto;
 			}
 		}
 		throw new Exception("Produto não encontrado."); 
 	}
 	
-	public String readProduto(String nome) throws Exception {
-		Produto produto = procuraProduto(nome);
+	public String readProduto(String nome, String descricao) throws Exception {
+		Produto produto = procuraProduto(nome, descricao);
 		return produto.toString() + "|";
 	}
 	
@@ -63,19 +63,19 @@ public class ProdutoCRUD {
 		return produtosOrdenados;
 	}
 	
-	public void editaPreco(String nome, double preco) throws Exception {
-		Produto produto = this.procuraProduto(nome);
+	public void editaPreco(String nome,String descricao, double preco) throws Exception {
+		Produto produto = this.procuraProduto(nome, descricao);
 		produto.setPreco(preco);
 	}
 	
-	public void removeProduto(String nome) throws Exception {
-		Produto produto = this.procuraProduto(nome);
+	public void removeProduto(String nome, String descricao) throws Exception {
+		Produto produto = this.procuraProduto(nome, descricao);
 		this.produtos.remove(produto);
 	}
 	
 	public List<String> getToStringProdutos(){
 		List<String> toStringProdutos = new ArrayList<>();
-		for(Produto produto : produtos) {
+		for(Produto produto : this.getProdutosOrdenados()) {
 			toStringProdutos.add(produto.toString()); 
 		}
 		return toStringProdutos;

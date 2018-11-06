@@ -99,7 +99,31 @@ public class Facade {
 			return this.fornecedor.exibeProduto(nomeProduto, descricao, nome);
 			
 		}catch (Exception e) {
-			throw new Exception("Erro na exibicao do produto: " + e.getMessage());
+			throw new Exception("Erro na exibicao de produto: " + e.getMessage());
+		}
+	}
+	
+	public String exibeProdutosFornecedor(String nome) throws Exception {
+		try {
+			return this.fornecedor.exibeProdutos(nome);
+		} catch (Exception e) {
+			throw new Exception("Erro na exibição do produto: " + e.getMessage());
+		}
+	}
+	
+	public String exibeProdutos() throws Exception {
+		try {
+			return this.fornecedor.exibeProdutosEFornecedores();
+		} catch (Exception e) {
+			throw new Exception("Erro na exibição de produto: " + e.getMessage());
+		}
+	}
+	
+	public void editaProduto(String nome,String descricao, double precoNovo) throws Exception {
+		try {
+			this.fornecedor.editaProduto(nome, descricao, precoNovo);
+		}catch (Exception e) {
+			throw new Exception("Erro na edicao do produto: " + e.getMessage());
 		}
 	}
 	
