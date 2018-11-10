@@ -120,5 +120,10 @@ public class ProdutoCRUD {
 		}
 	}
 	
+	public double calculaPreco(String nomeProduto, String descricao) throws Exception {
+		Produto produto = procuraProduto(nomeProduto, descricao);
+		return  produto.getPreco();
+	}
+	
 	
 }

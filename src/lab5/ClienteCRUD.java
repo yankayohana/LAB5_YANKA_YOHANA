@@ -36,7 +36,8 @@ public class ClienteCRUD {
 			contador += 1;
 			if (contador < this.getClientesOrdenados().size()) {
 				retorno += cliente.toString() + " | ";
-			}if (contador == this.getClientesOrdenados().size()){
+			}
+			if (contador == this.getClientesOrdenados().size()) {
 				retorno += cliente.toString();
 			}
 		}
@@ -53,10 +54,10 @@ public class ClienteCRUD {
 		if (clientes.containsKey(cpf)) {
 			Cliente cliente = this.clientes.get(cpf);
 			cliente.editarParametro(parametro, valor);
-		}else {
+		} else {
 			throw new Exception("cliente nao existe.");
 		}
-		
+
 	}
 
 	public void removeCliente(String cpf) {
@@ -67,11 +68,23 @@ public class ClienteCRUD {
 		if (clientes.containsKey(cpf)) {
 			return clientes.get(cpf).toString();
 
-		}else {
+		} else {
 			throw new Exception("Erro na exibicao do cliente: cliente nao existe.");
 		}
 
 	}
+
+	public Cliente getCliente(String cpf) throws Exception {
+		if (clientes.containsKey(cpf)) {
+			return clientes.get(cpf);
+		} else {
+			throw new Exception("cliente nao existe.");
+		}
+	}
 	
+	public String getNomeCliente(String cpf) throws Exception {
+		Cliente cliente = getCliente(cpf);
+		return cliente.getNome();
+	}
 
 }

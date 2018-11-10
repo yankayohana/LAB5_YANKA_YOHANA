@@ -4,6 +4,7 @@ public class ControllerSAGA {
 	
 	private ClienteCRUD cliente;
 	private FornecedorCRUD fornecedor;
+	private ContaCRUD conta;
 	
 	public ControllerSAGA() {
 		this.cliente = new ClienteCRUD();
@@ -72,9 +73,10 @@ public class ControllerSAGA {
 		fornecedor.editaCombo(fornecedorNome, nome, descricao, novoFator);
 	}
 	
-	//public void adicionaCompra() {
-		//fornecedor.adicionaCompra();
-	//}
+	public void adicionaConta(String cpf, String nomeFornecedor, String dataCompra, String nomeProduto, String descricao) throws Exception {
+		String nome = cliente.getNomeCliente(cpf); 
+		conta.adicionaConta(nome,cpf, nomeFornecedor, dataCompra, nomeProduto, descricao);
+	}
 	
 	
 	

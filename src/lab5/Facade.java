@@ -151,8 +151,12 @@ public class Facade {
 		}
 	}
 	
-	public void adicionaCompra(String fornecedor, String data, String nomeProduto, String descricao) {
-		
+	public void adicionaCompra(String cpf,String fornecedor, String data, String nomeProduto, String descricao) throws Exception {
+		try {
+			this.controller.adicionaConta(cpf, fornecedor, data, nomeProduto, descricao);
+		}catch (Exception e) {
+			throw new Exception("Erro ao cadastrar compra: " + e.getMessage());
+		}
 	}
 	
 	

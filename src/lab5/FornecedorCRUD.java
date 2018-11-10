@@ -203,6 +203,11 @@ public class FornecedorCRUD {
 		fornecedor.editaCombo(nome, descricao, novoFator);
 	}
 	
+	public double calculaPreco(String fornecedorNome,String nome, String descricao) throws Exception {
+		Fornecedor fornecedor = getFornecedor(fornecedorNome);
+		return fornecedor.calculaPrecoConta(nome, descricao);
+	}
+	
 
 
 }

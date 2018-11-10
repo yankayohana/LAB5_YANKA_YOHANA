@@ -209,5 +209,9 @@ public class Fornecedor implements Comparable<Fornecedor> {
 	public void editaCombo(String nome, String descricao, double novoFator) throws Exception {
 		this.produtos.editaCombo(nome, descricao, novoFator);
 	}
+	
+	public double calculaPrecoConta(String nome, String descricao) throws Exception {
+		return this.produtos.calculaPreco(nome, descricao);
+	}
 
 }
