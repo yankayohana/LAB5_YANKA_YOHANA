@@ -15,8 +15,14 @@ public class Validator {
 		}
 	}
 	
-	public static void verificaDouble(double preco, String mensagem) throws Exception {
-		if (preco < 0.0 ) {
+	public static void verificaDouble(double valor, String mensagem) throws Exception {
+		if (valor < 0.0 ) {
+			throw new Exception(mensagem);
+		}
+	}
+	
+	public static void verificaFator(double valor, String mensagem) throws Exception {
+		if (valor <= 0.0 || valor >= 1) {
 			throw new Exception(mensagem);
 		}
 	}

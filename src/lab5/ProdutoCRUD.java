@@ -1,6 +1,7 @@
 package lab5;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -79,6 +80,44 @@ public class ProdutoCRUD {
 			toStringProdutos.add(produto.toString()); 
 		}
 		return toStringProdutos;
+	}
+	
+	//////////// combo ///////////////
+	
+	public void cadastraCombo(String nome, String descricao, double fator, String produtos) throws Exception {
+		
+		Validator.verificaString(nome, "nome nao pode ser vazio ou nulo.");
+		Validator.verificaString(descricao, "descricao nao pode ser vazia ou nula.");
+		Validator.verificaFator(fator, "fator invalido.");
+		Validator.verificaString(produtos, "combo deve ter produtos.");
+		
+		String[] produtosSeparados = produtos.split(",");
+		
+		List<Produto> produtosCombo = new ArrayList<>();
+		for (String nomeEDescricaoProduto : produtosSeparados) {
+			String[] nomeEDescricao = nomeEDescricaoProduto.split(" - ");
+			String nomeProduto = nomeEDescricao[0].trim();
+			String descricaoProduto = nomeEDescricao[1].trim();
+			Produto produto = procuraProduto(nomeProduto, descricaoProduto);
+			if (produto instanceof Combo) {
+				throw new Exception("um combo nao pode possuir combos na lista de produtos.");
+			}
+			
+			produtosCombo.add(produto);
+		}
+		Combo combo = new Combo(nome, descricao, fator, produtosCombo);
+		if (!this.produtos.add(combo)) {
+			throw new Exception("combo ja existe.");
+		}
+	}
+	
+	public void editaCombo(String nome, String descricao, double novoFator) throws Exception {
+		Validator.verificaString(nome, "nome nao pode ser vazio ou nulo.");
+		Validator.verificaString(descricao, "descricao nao pode ser vazia ou nula.");
+		Produto produto = procuraProduto(nome, descricao);
+		if (produto instanceof Combo) {
+			((Combo) produto).setFator(novoFator);
+		}
 	}
 	
 	

@@ -4,23 +4,21 @@ import easyaccept.EasyAccept;
 
 public class Facade {
 
-	private ClienteCRUD cliente;
-	private FornecedorCRUD fornecedor;
+	private ControllerSAGA controller;
 
 	public Facade() {
-		this.cliente = new ClienteCRUD();
-		this.fornecedor = new FornecedorCRUD();
+		this.controller = new ControllerSAGA();
 	}
 
 	public static void main(String[] args) {
 		args = new String[] { "lab5.Facade", "TesteDeAceitacao/use_case_1.txt", "TesteDeAceitacao/use_case_2.txt",
-				"TesteDeAceitacao/use_case_3.txt" };
+				"TesteDeAceitacao/use_case_3.txt", "TesteDeAceitacao/use_case_4.txt", "TesteDeAceitacao/use_case_5.txt", "TesteDeAceitacao/use_case_6.txt", "TesteDeAceitacao/use_case_7.txt" };
 		EasyAccept.main(args);
 	}
 
 	public String adicionaCliente(String cpf, String nome, String email, String localizacao) throws Exception {
 		try {
-			cliente.createCliente(cpf, nome, email, localizacao);
+			controller.createCliente(cpf, nome, email, localizacao);
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro do cliente: " + e.getMessage());
 		}
@@ -29,28 +27,28 @@ public class Facade {
 
 	public void editaCliente(String cpf, String parametro, String valor) throws Exception {
 		try {
-			this.cliente.editaCliente(cpf, parametro, valor);
+			this.controller.editaCliente(cpf, parametro, valor);
 		} catch (Exception e) {
 			throw new Exception("Erro na edicao do cliente: " + e.getMessage());
 		}
 	}
 
 	public String exibeClientes() {
-		return this.cliente.exibeClientes();
+		return this.controller.exibeClientes();
 
 	}
 
 	public String exibeCliente(String cpf) throws Exception {
-		return this.cliente.exibeCliente(cpf);
+		return this.controller.exibeCliente(cpf);
 	}
 
 	public void removeCliente(String cpf) {
-		this.cliente.removeCliente(cpf);
+		this.controller.removeCliente(cpf);
 	}
 
 	public String adicionaFornecedor(String nome, String email, String telefone) throws Exception {
 		try {
-			this.fornecedor.createFornecedor(nome, email, telefone);
+			this.controller.createFornecedor(nome, email, telefone);
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro do fornecedor: " + e.getMessage());
 		}
@@ -59,7 +57,7 @@ public class Facade {
 
 	public void editaFornecedor(String nome, String parametro, String valor) throws Exception {
 		try {
-			this.fornecedor.editaFornecedor(nome, parametro, valor);
+			this.controller.editaFornecedor(nome, parametro, valor);
 		} catch (Exception e) {
 			throw new Exception("Erro na edicao do fornecedor: " + e.getMessage());
 		}
@@ -67,12 +65,12 @@ public class Facade {
 	}
 
 	public String exibeFornecedores() {
-		return this.fornecedor.exibeFornecedores();
+		return this.controller.exibeFornecedores();
 	}
 
 	public void removeFornecedor(String nome) throws Exception {
 		try {
-			this.fornecedor.removeFornecedor(nome);
+			this.controller.removeFornecedor(nome);
 		} catch (Exception e) {
 			throw new Exception("Erro na remocao do fornecedor: " + e.getMessage());
 		}
@@ -80,7 +78,7 @@ public class Facade {
 
 	public String exibeFornecedor(String nome) throws Exception {
 		try {
-			return this.fornecedor.exibeFornecedor(nome);
+			return this.controller.exibeFornecedor(nome);
 		} catch (Exception e) {
 			throw new Exception("Erro na exibicao do fornecedor: " + e.getMessage());
 		}
@@ -88,7 +86,7 @@ public class Facade {
 	
 	public void adicionaProduto(String nome, String nomeProduto, String descricao, double preco) throws Exception {
 		try {
-			this.fornecedor.cadastraProduto(nome, nomeProduto, descricao, preco);
+			this.controller.cadastraProduto(nome, nomeProduto, descricao, preco);
 		 } catch (Exception e) {
 			throw new Exception("Erro no cadastro de produto: " + e.getMessage());
 		}
@@ -96,7 +94,7 @@ public class Facade {
 	
 	public String exibeProduto(String nomeProduto, String descricao, String nome) throws Exception {
 		try {
-			return this.fornecedor.exibeProduto(nomeProduto, descricao, nome);
+			return this.controller.exibeProduto(nomeProduto, descricao, nome);
 			
 		}catch (Exception e) {
 			throw new Exception("Erro na exibicao de produto: " + e.getMessage());
@@ -105,7 +103,7 @@ public class Facade {
 	
 	public String exibeProdutosFornecedor(String nome) throws Exception {
 		try {
-			return this.fornecedor.exibeProdutos(nome);
+			return this.controller.exibeProdutos(nome);
 		} catch (Exception e) {
 			throw new Exception("Erro na exibição do produto: " + e.getMessage());
 		}
@@ -113,7 +111,7 @@ public class Facade {
 	
 	public String exibeProdutos() throws Exception {
 		try {
-			return this.fornecedor.exibeProdutosEFornecedores();
+			return this.controller.exibeProdutosEFornecedores();
 		} catch (Exception e) {
 			throw new Exception("Erro na exibição de produto: " + e.getMessage());
 		}
@@ -121,7 +119,7 @@ public class Facade {
 	
 	public void editaProduto(String nome,String descricao, String nomeFornecedor,  double precoNovo) throws Exception {
 		try {
-			this.fornecedor.editaProduto(nome, descricao, nomeFornecedor, precoNovo);
+			this.controller.editaProduto(nome, descricao, nomeFornecedor, precoNovo);
 		}catch (Exception e) {
 			throw new Exception("Erro na edicao de produto: " + e.getMessage());
 		}
@@ -129,10 +127,33 @@ public class Facade {
 	
 	public void removeProduto(String nome, String descricao, String nomeFornecedor) throws Exception {
 		try {
-			this.fornecedor.removeProduto(nome, descricao, nomeFornecedor);
+			this.controller.removeProduto(nome, descricao, nomeFornecedor);
 		}catch (Exception e) {
 			throw new Exception("Erro na remocao de produto: " + e.getMessage());
 		}
 	}
+	
+	//////////////// teste de aceitacao case 5 //////////////////
+	
+	public void adicionaCombo(String fornecedor, String nome, String descricao, double fator, String produtos) throws Exception {
+		try {
+			this.controller.cadastraCombo(fornecedor, nome, descricao, fator, produtos);
+		}catch (Exception e) {
+			throw new Exception("Erro no cadastro de combo: " + e.getMessage());
+		}
+	}
+	
+	public void editaCombo(String nome, String descricao,String fornecedor, double novoFator) throws Exception {
+		try {
+			this.controller.editaCombo(fornecedor, nome, descricao, novoFator);
+		}catch (Exception e) {
+			throw new Exception("Erro na edicao de combo: " + e.getMessage());
+		}
+	}
+	
+	public void adicionaCompra(String fornecedor, String data, String nomeProduto, String descricao) {
+		
+	}
+	
 	
 }

@@ -199,5 +199,15 @@ public class Fornecedor implements Comparable<Fornecedor> {
 		}
 		return retorno;
 	}
+	
+	/////////////// combo ////////////////
+	
+	public void cadastraCombo(String nome, String descricao, double fator, String produtos) throws Exception {
+		this.produtos.cadastraCombo(nome, descricao, fator, produtos);
+	}
+	
+	public void editaCombo(String nome, String descricao, double novoFator) throws Exception {
+		this.produtos.editaCombo(nome, descricao, novoFator);
+	}
 
 }

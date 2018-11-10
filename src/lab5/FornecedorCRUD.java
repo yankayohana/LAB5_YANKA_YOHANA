@@ -186,5 +186,23 @@ public class FornecedorCRUD {
 		Validator.verificaString(nomeFornecedor, "fornecedor nao pode ser vazio ou nulo.");
 		this.getFornecedor(nomeFornecedor).removeProduto(nome, descricao);
 	}
+	
+	/////////////////////////// combo //////////////////////////////
+	
+	public void cadastraCombo(String fornecedorNome, String nome, String descricao, double fator, String produtos) throws Exception {
+		Validator.verificaString(fornecedorNome, "fornecedor nao pode ser vazio ou nulo.");
+		
+		Fornecedor fornecedor = getFornecedor(fornecedorNome);
+		fornecedor.cadastraCombo(nome, descricao, fator, produtos);
+		
+	}
+	
+	public void editaCombo(String fornecedorNome, String nome, String descricao, double novoFator) throws Exception {
+		Validator.verificaString(fornecedorNome, "fornecedor nao pode ser vazio ou nulo.");
+		Fornecedor fornecedor = getFornecedor(fornecedorNome);
+		fornecedor.editaCombo(nome, descricao, novoFator);
+	}
+	
+
 
 }
